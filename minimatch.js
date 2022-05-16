@@ -845,12 +845,13 @@ class Minimatch {
     // comments, etc.
     if (this.comment) return false
     if (this.empty) return f === ''
+    if (f === null) return false
 
     if (f === '/' && partial) return true
 
     const options = this.options
 
-    // windows: need to use /, not \
+    // windows: need to use /, not \ 
     if (path.sep !== '/') {
       f = f.split(path.sep).join('/')
     }
